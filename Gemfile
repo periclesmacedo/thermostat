@@ -7,7 +7,7 @@ end
 
 
 gem 'rails', '~> 5.1.4'
-gem 'sqlite3'
+gem 'pg', '~> 0.21.0'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -20,8 +20,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -30,6 +30,11 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'factory_bot_rails'
   gem 'faker'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do
