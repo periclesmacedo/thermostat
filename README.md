@@ -1,24 +1,33 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Thermostat
 
-Things you may want to cover:
+A server applcation to communicate between users and their thermostat devices.
 
-* Ruby version
+## How to setup
+To setup this project, you need to have [ruby](https://rvm.io/rvm/install) and [postgres](https://www.postgresql.org/download/) installed
 
-* System dependencies
+```
+git clone https://github.com/periclesmacedo/thermostat
+cd thermostat
+bundle install
+rake db:setup
+```
+## How to test
 
-* Configuration
+You can run the tests with`rake spec`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Todo
+- [x] sign up through json endoint
+- [x] sign in through json endpoint
+- [ ] sign up through page
+- [ ] sign in through page
+- [ ] CRUD user info through endpoint
+- [ ] CRUD user info through account page
+- [ ] register device through endpoint
+- [ ] assign device through endpoint
+- [ ] assign device through account page
+- [ ] send temperature change command through endpoint
+- [ ] communicate device command through MQTT channel
+- [ ] receive real time stats from device (MQTT, plain websocket, or bulk json?)
+- [ ] calculate device stats on account page
+- [ ] calculate device stats and send through endpoint
