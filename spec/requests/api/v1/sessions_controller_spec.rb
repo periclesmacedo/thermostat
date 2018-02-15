@@ -2,12 +2,10 @@ require 'rails_helper'
 
 shared_examples "returns the user's info and token" do
   it "returns the user's info" do
-    json = JSON.parse response.body
     expect(json.keys).to include('name', 'email')
   end
 
   it "returns the user's token" do
-    json = JSON.parse response.body
     expect(json.keys).to include('token')
   end
 end
@@ -39,7 +37,6 @@ describe Api::V1::SessionsController, type: :request do
       end
 
       it 'returns an error message' do
-        json = JSON.parse response.body
         expect(json.keys).to_not include('name', 'email')
         expect(json['errors']['messages']).to eq ["Email can't be blank"]
         expect(json['errors']['attributes']).to eq({ "email" => ["can't be blank"] })
@@ -65,18 +62,15 @@ describe Api::V1::SessionsController, type: :request do
       end
 
       it 'does not return a valid user token' do
-        json = JSON.parse response.body
         expect(json.keys).to_not include('token')
       end
 
       it "does not return the user's info" do
-        json = JSON.parse response.body
         expect(json.keys).to_not include('email')
         expect(json.keys).to_not include('name')
       end
 
       it 'returns an error message' do
-        json = JSON.parse response.body
         expect(json['errors']['attributes']).to eq({ "password" => ["does not match"] })
         expect(json['errors']['messages']).to eq ["Password does not match"]
       end
