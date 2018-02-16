@@ -23,7 +23,7 @@ You can run the tests with`rake spec`
 - [ ] sign in through page
 - [ ] CRUD user info through endpoint
 - [ ] CRUD user info through account page
-- [ ] register device through endpoint
+- [x] register device through endpoint
 - [ ] assign device through endpoint
 - [ ] assign device through account page
 - [ ] send temperature change command through endpoint
