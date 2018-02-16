@@ -21,4 +21,23 @@ describe User, type: :model do
     it { should validate_uniqueness_of(:email) }
     it { should validate_length_of(:password).is_at_least(8).on(:create) }
   end
+
+  context  '#authenticate' do
+    before do
+      @user = User.create(name: 'user', email: 'user@gmail.com', password: 'password', password_confirmation: 'password')
+    end
+
+    it 'returns false if password password is nil' do
+      expect(@user.authenticate(nil)).to be_falsey
+    end
+
+    it 'returns true if password is correct' do
+      expect(@user.authenticate('password')).to be_truthy
+    end
+
+    it 'sets an error to the model if the password is not valid' do
+      @user.authenticate('')
+      expect(@user.errors.details[:password].first[:error]).to eq 'does not match'
+    end
+  end
 end
