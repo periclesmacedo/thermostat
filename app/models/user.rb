@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :devices
+
   has_secure_password
 
   validates :name, :email, presence: true

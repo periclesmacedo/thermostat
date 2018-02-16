@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe User, type: :model do
+  context 'relations' do
+    it { should have_many(:devices)}
+  end
   context 'attributes' do
     before do
       @user = User.create(name: 'user', email: 'user@gmail.com', password: 'password', password_confirmation: 'password')
